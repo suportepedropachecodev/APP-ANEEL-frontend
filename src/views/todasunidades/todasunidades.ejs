@@ -1,0 +1,323 @@
+<!--head-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dados obtidos da Aneel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        .table-condensed {
+            font-size: 13px!important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Unidades consumidoras com geração distribuída com Tipo de Geração: UFV
+                        <span class="sr-only">(current)</span></a>
+                    <a class="btn btn-outline-primary"
+                        href="http://www2.aneel.gov.br/scg/gd/VerGD.asp?pagina=1&acao=buscar&login=&NomPessoa=&IdAgente=&DatConexaoInicio=&DatConexaoFim=" target="_blank"
+                        rel="noopener">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Dados extraidos da ANEEL</font>
+                        </font>
+                    </a>
+                    <a type="submit" href="#" class="btn btn-outline-dark"">Inicio</a>
+          </li>
+          <li class=" nav-item">
+                        <!--a class="nav-link disabled" href="/add-product"-->
+                        <!--Add Product></Add-->
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--head-->
+    <div class="container-fluid">
+        <div class="row p-5">
+            <!-- ITEMS -->
+            <div class="card mb-3 table-responsive">
+                <div class="card-header">
+                    <i class="fa fa-table"></i>Total de Unidades: 136.000
+                </div>
+                <!--consulta-->
+                <div class="container">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Pesquisa</h3>
+                        </div>
+                        <!--consulta municipio-->
+                        <form action="#" method="POST">
+                            <label>Digite o município</label><br>
+                            <input type="text" placeholder="Cidade" name="municipio">
+                            <!--div class="form-group form-check"-->
+                            <button type="submit" class="btn btn-success">Pesquisar</button>
+                            <!--/div-->
+                        </form>
+                        <!--consulta municipio-->
+                        <hr>
+                        <!--consulta estado-->
+                        <form action="#" method="POST">
+                            <label>Selecione o Estado</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="uf">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA"> Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba </option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul </option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina </option>
+                                    <option value="SP">São Paulo </option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">Pesquisar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!--consulta estado-->
+                    </div>
+                </div>
+                <hr>
+                <table class="table table-bordered table-sm table-condensed" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Distribuidora</th>
+                            <th>Código da GD</th>
+                            <th>Titular da UC</th>
+                            <th>Classe</th>
+                            <th>Subgrupo</th>
+                            <th>Modalidade</th>
+                            <th>Qtde UCs recebem os créditos</th>
+                            <th>Município</th>
+                            <th>UF</th>
+                            <th>CEP</th>
+                            <th>Data Conexão</th>
+                            <th>Fonte</th>
+                            <th>Potência Instalada (kW)</th>
+                            <th>Qtde Módulos</th>
+                            <th>Qtde Inversores</th>
+                            <th>Área Arranjo</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Distribuidora</th>
+                            <th>Código da GD</th>
+                            <th>Titular da UC</th>
+                            <th>Classe</th>
+                            <th>Subgrupo</th>
+                            <th>Modalidade</th>
+                            <th>Qtde UCs recebem os créditos</th>
+                            <th>Município</th>
+                            <th>UF</th>
+                            <th>CEP</th>
+                            <th>Data Conexão</th>
+                            <th>Fonte</th>
+                            <th>Potência Instalada (kW)</th>
+                            <th>Qtde Módulos</th>
+                            <th>Qtde Inversores</th>
+                            <th>Área Arranjo</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
+                            <td>GD.MT.000.126.236</td>
+                            <td>3 C INFORMATICA LTDA ME</td>
+                            <td>Comercial</td>
+                            <td>B2</td>
+                            <td>Geracao na propria UC</td>
+                            <td>1</td>
+                            <td>Laranjeiras do Sul</td>
+                            <td>PR</td>
+                            <td>25070-420</td>
+                            <td>03/09/2019</td>
+                            <td>Radiação solar</td>
+                            <td>89,2</td>
+                            <td>258</td>
+                            <td>4</td>
+                            <td>258</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
+                            <td>GD.MT.000.126.236</td>
+                            <td>3 C INFORMATICA LTDA ME</td>
+                            <td>Comercial</td>
+                            <td>B2</td>
+                            <td>Geracao na propria UC</td>
+                            <td>1</td>
+                            <td>Laranjeiras do Sul</td>
+                            <td>PR</td>
+                            <td>25070-420</td>
+                            <td>03/09/2019</td>
+                            <td>Radiação solar</td>
+                            <td>89,2</td>
+                            <td>258</td>
+                            <td>4</td>
+                            <td>258</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
+                            <td>GD.MT.000.126.236</td>
+                            <td>3 C INFORMATICA LTDA ME</td>
+                            <td>Comercial</td>
+                            <td>B2</td>
+                            <td>Geracao na propria UC</td>
+                            <td>1</td>
+                            <td>Laranjeiras do Sul</td>
+                            <td>PR</td>
+                            <td>25070-420</td>
+                            <td>03/09/2019</td>
+                            <td>Radiação solar</td>
+                            <td>89,2</td>
+                            <td>258</td>
+                            <td>4</td>
+                            <td>258</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
+                            <td>GD.MT.000.126.236</td>
+                            <td>3 C INFORMATICA LTDA ME</td>
+                            <td>Comercial</td>
+                            <td>B2</td>
+                            <td>Geracao na propria UC</td>
+                            <td>1</td>
+                            <td>Laranjeiras do Sul</td>
+                            <td>PR</td>
+                            <td>25070-420</td>
+                            <td>03/09/2019</td>
+                            <td>Radiação solar</td>
+                            <td>89,2</td>
+                            <td>258</td>
+                            <td>4</td>
+                            <td>258</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
+                            <td>GD.MT.000.126.236</td>
+                            <td>3 C INFORMATICA LTDA ME</td>
+                            <td>Comercial</td>
+                            <td>B2</td>
+                            <td>Geracao na propria UC</td>
+                            <td>1</td>
+                            <td>Laranjeiras do Sul</td>
+                            <td>PR</td>
+                            <td>25070-420</td>
+                            <td>03/09/2019</td>
+                            <td>Radiação solar</td>
+                            <td>89,2</td>
+                            <td>258</td>
+                            <td>4</td>
+                            <td>258</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <!-- pagination -->
+            
+            <!-- show pagination if there is pages -->
+            <nav class="mx-auto">
+            <ul class="pagination">
+                <!-- FIRST ITEM -->
+                
+                <li class="page-item disabled">
+                <a class="page-link" href="#">Primeiro</a>
+                </li>
+                
+                <li class="page-item">
+                <a class="page-link" href="#">Primeiro</a>
+                </li>
+                <!-- ITEMS  -->
+                
+                <li class="page-item disabled">
+                <a class="page-link" href="#">...</a>
+                </li>
+                
+                <li class="page-item active">
+                <a class="page-link" href="#">
+                    
+                </a>
+                </li>
+                
+                <li class="page-item">
+                <a class="page-link" href="#">
+                    
+                </a>
+                </li>
+                
+                <li class="page-item disabled">
+                <a class="page-link" href="#">...</a>
+                </li>
+            
+                <!-- LAST ITEM -->
+                
+                <li class="page-item disabled">
+                <a class="page-link" href="#">
+                    Ultimo
+                </a>
+                </li>
+                
+                <li class="page-item">
+                <a class="page-link" href="#">
+                    Ultimo
+                </a>
+                </li>
+                
+            </ul>
+            </nav>
+            
+        </div>
+    </div>
+</body>
+<!--Rodapé-->
+<div class="card-body"><a type="submit" href="#" class="btn btn-outline-dark">Inicio</a>
+    <a class="btn btn-outline-primary" href="http://www2.aneel.gov.br/scg/gd/gd_fonte_detalhe.asp?tipo=12&pagina=1"
+        target="_blank" rel="noopener">
+        <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Dados extraidos da ANEEL</font>
+        </font>
+    </a>
+</div>
+</html>
+<!--Rodapé-->
