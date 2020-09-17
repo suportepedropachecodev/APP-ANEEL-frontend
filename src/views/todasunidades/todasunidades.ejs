@@ -49,7 +49,7 @@
             <!-- ITEMS -->
             <div class="card mb-3 table-responsive">
                 <div class="card-header">
-                    <i class="fa fa-table"></i>Total de Unidades: 136.000
+                    <i class="fa fa-table"></i>Total de Unidades: <%= totalregistros%>
                 </div>
                 <!--consulta-->
                 <div class="container">
@@ -125,9 +125,7 @@
                             <th>Data Conexão</th>
                             <th>Fonte</th>
                             <th>Potência Instalada (kW)</th>
-                            <th>Qtde Módulos</th>
-                            <th>Qtde Inversores</th>
-                            <th>Área Arranjo</th>
+                            
                         </tr>
                     </thead>
                     <tfoot>
@@ -145,111 +143,29 @@
                             <th>Data Conexão</th>
                             <th>Fonte</th>
                             <th>Potência Instalada (kW)</th>
-                            <th>Qtde Módulos</th>
-                            <th>Qtde Inversores</th>
-                            <th>Área Arranjo</th>
+                            
                         </tr>
                     </tfoot>
+                    <% for(var i = 0; i< products.length; i++) {%>
                     <tbody>
                         <tr>
-                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
-                            <td>GD.MT.000.126.236</td>
-                            <td>3 C INFORMATICA LTDA ME</td>
-                            <td>Comercial</td>
-                            <td>B2</td>
-                            <td>Geracao na propria UC</td>
-                            <td>1</td>
-                            <td>Laranjeiras do Sul</td>
-                            <td>PR</td>
-                            <td>25070-420</td>
-                            <td>03/09/2019</td>
-                            <td>Radiação solar</td>
-                            <td>89,2</td>
-                            <td>258</td>
-                            <td>4</td>
-                            <td>258</td>
+                            <td><%=products[i].distibuidora%></td>
+                            <td><%=products[i].codigo%></td>
+                            <td><%=products[i].titular%></td>
+                            <td><%=products[i].classe%></td>
+                            <td><%=products[i].subgrupo%></td>
+                            <td><%=products[i].modalidade%></td>
+                            <td><%=products[i].credito%></td>
+                            <td><%=products[i].municipio%></td>
+                            <td><%=products[i].uf%></td>
+                            <td><%=products[i].cep%></td>
+                            <td><%=products[i].data%></td>
+                            <td><%=products[i].fonte%></td>
+                            <td><%=products[i].potencia%></td>
+                            
                         </tr>
                     </tbody>
-                    <tbody>
-                        <tr>
-                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
-                            <td>GD.MT.000.126.236</td>
-                            <td>3 C INFORMATICA LTDA ME</td>
-                            <td>Comercial</td>
-                            <td>B2</td>
-                            <td>Geracao na propria UC</td>
-                            <td>1</td>
-                            <td>Laranjeiras do Sul</td>
-                            <td>PR</td>
-                            <td>25070-420</td>
-                            <td>03/09/2019</td>
-                            <td>Radiação solar</td>
-                            <td>89,2</td>
-                            <td>258</td>
-                            <td>4</td>
-                            <td>258</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
-                            <td>GD.MT.000.126.236</td>
-                            <td>3 C INFORMATICA LTDA ME</td>
-                            <td>Comercial</td>
-                            <td>B2</td>
-                            <td>Geracao na propria UC</td>
-                            <td>1</td>
-                            <td>Laranjeiras do Sul</td>
-                            <td>PR</td>
-                            <td>25070-420</td>
-                            <td>03/09/2019</td>
-                            <td>Radiação solar</td>
-                            <td>89,2</td>
-                            <td>258</td>
-                            <td>4</td>
-                            <td>258</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
-                            <td>GD.MT.000.126.236</td>
-                            <td>3 C INFORMATICA LTDA ME</td>
-                            <td>Comercial</td>
-                            <td>B2</td>
-                            <td>Geracao na propria UC</td>
-                            <td>1</td>
-                            <td>Laranjeiras do Sul</td>
-                            <td>PR</td>
-                            <td>25070-420</td>
-                            <td>03/09/2019</td>
-                            <td>Radiação solar</td>
-                            <td>89,2</td>
-                            <td>258</td>
-                            <td>4</td>
-                            <td>258</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>DISTRIBUIDORA DE ENERGIA S.A.</td>
-                            <td>GD.MT.000.126.236</td>
-                            <td>3 C INFORMATICA LTDA ME</td>
-                            <td>Comercial</td>
-                            <td>B2</td>
-                            <td>Geracao na propria UC</td>
-                            <td>1</td>
-                            <td>Laranjeiras do Sul</td>
-                            <td>PR</td>
-                            <td>25070-420</td>
-                            <td>03/09/2019</td>
-                            <td>Radiação solar</td>
-                            <td>89,2</td>
-                            <td>258</td>
-                            <td>4</td>
-                            <td>258</td>
-                        </tr>
-                    </tbody>
+                    <%}%>
                 </table>
             </div>
         </div>
