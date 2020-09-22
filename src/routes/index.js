@@ -76,9 +76,42 @@ router.get('/uf/:estado?/:page?', (req, res) => {
         }
 });
 
+router.get('/municipio?/:cidade?/:page?', (req, res) => {
+    const cidade = req.params.cidade;
+    if (cidade) {
+        const dtaneel = mongoose.model('dadosaneel', dadosaneel);
+        let perpage = 100;
+        let page = req.params.page || 1;
+        
+        dtaneel
+            .find({ "municipio": {$regex:cidade, $options: "i"} })
+            .skip((perpage * page) - perpage)
+            .limit(perpage)
+            .exec((err, city) => {
+                dtaneel.countDocuments({"municipio":{$regex:cidade, $options: "i"}}, (err, count)=>{
+                    if(err) return next(err);
+                    res.render('municipio/municipio',{
+                        cidades:city,
+                        current:page,
+                        pages: Math.ceil(count / perpage),
+                        cidade: cidade,
+                        totalmunicipios:count
+                    })
+                })
+            })
+        }else{
+            res.redirect('/dados/1');
+        }
+});
+
 router.post('/estado/', (req, res)=>{
     const estado = req.body.uf
     res.redirect(`/uf/${estado}`);
+});
+
+router.post('/city/', (req, res)=>{
+    const cidade = req.body.municipio
+    res.redirect(`/municipio/${cidade}`);
 })
 
 module.exports = router;

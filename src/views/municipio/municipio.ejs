@@ -1,0 +1,145 @@
+<%- include('../partes/head')%>
+
+    <div class="container-fluid">
+        <h1>
+            Consulta pelo municipio : <%= cidade%>
+        </h1>
+        <div class="row p-5">
+            <!-- ITEMS -->
+            <div class="card mb-3 table-responsive">
+                <div class="card-header">
+                    <i class="fa fa-table"></i>Total de Unidades: <%= totalmunicipios%>
+                </div>
+                
+                    <div class="card-body">
+                        
+                <table class="table table-bordered table-sm table-condensed" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Distribuidora</th>
+                            <th>Código da GD</th>
+                            <th>Titular da UC</th>
+                            <th>Classe</th>
+                            <th>Subgrupo</th>
+                            <th>Modalidade</th>
+                            <th>Qtde UCs recebem os créditos</th>
+                            <th>Município</th>
+                            <th>UF</th>
+                            <th>CEP</th>
+                            <th>Data Conexão</th>
+                            <th>Fonte</th>
+                            <th>Potência Instalada (kW)</th>
+                            
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Distribuidora</th>
+                            <th>Código da GD</th>
+                            <th>Titular da UC</th>
+                            <th>Classe</th>
+                            <th>Subgrupo</th>
+                            <th>Modalidade</th>
+                            <th>Qtde UCs recebem os créditos</th>
+                            <th>Município</th>
+                            <th>UF</th>
+                            <th>CEP</th>
+                            <th>Data Conexão</th>
+                            <th>Fonte</th>
+                            <th>Potência Instalada (kW)</th>
+                            
+                        </tr>
+                    </tfoot>
+                    <% cidades.forEach(cidade=> {%>
+                    <tbody>
+                        <tr>
+                            <td><%=cidade.distibuidora%></td>
+                            <td><%=cidade.codigo%></td>
+                            <td><%=cidade.titular%></td>
+                            <td><%=cidade.classe%></td>
+                            <td><%=cidade.subgrupo%></td>
+                            <td><%=cidade.modalidade%></td>
+                            <td><%=cidade.credito%></td>
+                            <td><%=cidade.municipio%></td>
+                            <td><%=cidade.cidade%></td>
+                            <td><%=cidade.cep%></td>
+                            <td><%=cidade.data%></td>
+                            <td><%=cidade.fonte%></td>
+                            <td><%=cidade.potencia%></td>
+                            
+                        </tr>
+                    </tbody>
+                    <%})%>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <!-- pagination -->
+            <% if(pages > 0) {%>
+            
+            <!-- show pagination if there is pages -->
+            <nav class="mx-auto">
+            <ul class="pagination">
+                <!-- FIRST ITEM -->
+                <% if(current == 1) {%>
+                <li class="page-item disabled">
+                <a class="page-link" href="#">Primeiro</a>
+                </li>
+                <%}else{%>
+                <li class="page-item">
+                <a class="page-link" href="/municipio/<%= cidade%>">Primeiro</a>
+                </li>
+                <%}%>
+                <!-- ITEMS  -->
+                <% var i = (Number(current)>5 ? Number(current)-4:1)%>
+                <%if(i!==1){%>
+                <li class="page-item disabled">
+                <a class="page-link" href="#">...</a>
+                </li>
+                <%}%>
+                <%for(; i <=(Number(current)+4)&& i <= pages; i++){%>
+                    <% if(i==current){%>
+                <li class="page-item active">
+                <a class="page-link" href="<%=i%>">
+                    <%= i%>
+                    
+                </a>
+                </li>
+                <%}else {%>
+                <li class="page-item">
+                <a class="page-link" href="/municipio/<%= cidade%>/<%=i%>">
+                    <%= i%>
+                </a>
+                </li>
+                <%}%>
+                <%if(i == Number(current)+4 && i < pages){%>
+                <li class="page-item disabled">
+                <a class="page-link" href="#">...</a>
+                </li>
+                <%}%>
+                <%}%>
+            
+                <!-- LAST ITEM -->
+                <%if(current == pages){%>
+                <li class="page-item disabled">
+                <a class="page-link" href="#">
+                    Ultimo
+                </a>
+                </li>
+                <%}else{%>
+                <li class="page-item">
+                <a class="page-link" href="/municipio/<%= cidade%>/<%= pages%>">
+                    Ultimo
+                </a>
+                </li>
+                <%}%>
+            </ul>
+            </nav>
+            <%}%>
+        </div>
+    </div>
+</body>
+<!--Rodapé-->
+<%- include('../partes/footer')%>
+</html>
+<!--Rodapé-->
